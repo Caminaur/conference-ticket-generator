@@ -1,0 +1,73 @@
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./images/background-desktop.png");
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lines {
+  position: absolute;
+  width: 100%;
+  opacity: 0.4;
+  background-image: url("/images/pattern-lines.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
+}
+
+.circle {
+  position: absolute;
+  height: 220px;
+  width: 220px;
+  top: 40%;
+  right: 15%;
+}
+
+.pattern_1 {
+  position: absolute;
+  width: 100%;
+  height: 350px;
+  bottom: 0;
+  left: 0;
+  background-image: url("/images/pattern-squiggly-line-bottom-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-clip: content-box;
+  opacity: 0.7;
+}
+.pattern_2 {
+  position: absolute;
+  height: 220px;
+  top: 100px;
+  right: 0;
+}
+@media (max-width: 900px) {
+  .pattern_1 {
+    height: 200px;
+  }
+  .pattern_2 {
+    height: 100px;
+  }
+}
+@media (max-width: 500px) {
+  .circle {
+    position: absolute;
+    height: 140px;
+    width: 140px;
+    top: 40%;
+    right: -10%;
+  }
+
+  .pattern_1 {
+    background-image: url("/images/pattern-squiggly-line-bottom-mobile-tablet.svg");
+  }
+  .pattern_2 {
+    height: 50px;
+    top: 30px;
+  }
+}
