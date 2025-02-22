@@ -40,6 +40,7 @@
   flex-direction: column;
   margin-top: 2rem;
   gap: 10px;
+  z-index: 2;
 }
 .form img {
   width: 200px;
@@ -164,6 +165,11 @@
 
 .btn:hover {
   background-color: var(--orange-700);
+}
+
+.error {
+  font-size: 13px;
+  color: firebrick;
 }
 
 @media (max-width: 700px) {
