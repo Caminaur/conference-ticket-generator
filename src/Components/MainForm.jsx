@@ -86,6 +86,9 @@ function MainForm() {
     const email = document.getElementById("email");
     const gitProfile = document.getElementById("github");
     const avatar = document.getElementById("fileInput");
+    let container = document.querySelector(".container");
+    let errorsCount = 0;
+    container.setAttribute("class", "container");
 
     const inputs = [name, email, gitProfile];
 
@@ -101,12 +104,17 @@ function MainForm() {
         p.innerHTML = "This field can not be empty";
         p.classList.add("error");
         parentDiv.appendChild(p);
+        errorsCount++;
       } else {
         if (parentDiv.querySelector(".error")) {
           parentDiv.querySelector(".error").remove();
         }
       }
     }
+    if (errorsCount) {
+      container.classList.add(`reduce-${errorsCount}`);
+    }
+
     validateEmail();
 
     const icon = document.querySelector("#upload-avatar-message svg");
