@@ -54,6 +54,9 @@ img.logo {
   pointer-events: none;
 }
 @media (max-width: 900px) {
+  .background {
+    background-image: url("/images/background-tablet.png");
+  }
   .pattern_1 {
     height: 200px;
   }
@@ -72,7 +75,9 @@ img.logo {
     top: 40%;
     right: -10%;
   }
-
+  .background {
+    background-image: url("/images/background-mobile.png");
+  }
   .pattern_1 {
     background-image: url("/images/pattern-squiggly-line-bottom-mobile-tablet.svg");
   }

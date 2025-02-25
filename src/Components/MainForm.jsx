@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MainForm.css";
 
 function MainForm() {
@@ -153,16 +153,30 @@ function MainForm() {
       parentDiv.appendChild(p);
     }
   }
+
+  useEffect(() => {
+    submitForm();
+  }, []);
+
+  function submitForm() {
+    const title = document.getElementById("title");
+    const description = document.getElementById("description");
+    title.innerHTML =
+      "Congrats, <p class='ticket-user'>Juan carlos!<p/> Your ticket is ready.";
+    description.innerHTML =
+      "We've emailed your ticket to <p class='ticket-email'>juancarlos@email.com <p/>and will send updates in the run up to the event.";
+  }
+
   return (
     <div className="container">
       <img className="logo" src="./images/logo-full.svg" alt="" />
 
-      <p className="title">
+      <p className="title" id="title">
         Your Journey to Coding Conf <br />
         2025 Starts Here!
       </p>
 
-      <p className="description">
+      <p className="description" id="description">
         Secure your spot at next year's biggest coding conference.
       </p>
 
@@ -249,6 +263,41 @@ function MainForm() {
           Generate My Ticket
         </button>
       </form>
+
+      <section className="ticket-container">
+        <div className="ticket">
+          <img
+            className="background-image"
+            src="/images/pattern-ticket.svg"
+            alt=""
+          />
+          <div className="top">
+            <img className="logo-ticket" src="./images/logo-full.svg" alt="" />
+            <p className="date-and-location">Jan 31, 2025 / Austin, TX</p>
+          </div>
+
+          <div className="bottom">
+            <img
+              className="user-avatar"
+              src="./images/image-avatar.jpg"
+              alt=""
+            />
+
+            <div className="user-data">
+              <p className="user-name">Jonatan Kristof</p>
+              <div className="row">
+                <img
+                  className="github-icon"
+                  src="/images/icon-github.svg"
+                  alt=""
+                />
+                <p className="github-name">@jonatankistof0101</p>
+              </div>
+            </div>
+          </div>
+          <div className="code">#01609</div>
+        </div>
+      </section>
     </div>
   );
 }
