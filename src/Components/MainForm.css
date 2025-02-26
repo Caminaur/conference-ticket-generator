@@ -193,9 +193,6 @@
   transition: background-color 300ms ease;
   cursor: pointer;
 }
-.form {
-  display: none;
-}
 .btn:hover {
   background-color: var(--orange-700);
 }
@@ -223,11 +220,11 @@
 .ticket {
   width: 600px;
   height: 280px;
-  margin-top: 10rem;
-  display: flex;
+  margin-top: 5rem;
   justify-content: space-between;
   flex-direction: column;
   position: relative;
+  display: none;
 }
 .logo-ticket {
   height: 35px;

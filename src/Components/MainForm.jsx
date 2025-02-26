@@ -131,6 +131,15 @@ function MainForm() {
       message.style.color = "#D1D0D5";
       icon.style.stroke = "#D1D0D5";
     }
+
+    if (errorsCount === 0) {
+      submitForm({
+        name: name.value,
+        email: email.value,
+        gitProfile: gitProfile.value,
+        avatar,
+      });
+    }
   }
 
   function validateEmail() {
@@ -154,17 +163,57 @@ function MainForm() {
     }
   }
 
-  useEffect(() => {
-    submitForm();
-  }, []);
+  function submitForm(user) {
+    const userName = user.name;
+    const userEmail = user.email;
+    const userGitProfile = user.gitProfile;
 
-  function submitForm() {
+    console.log(user.avatar.files[0]);
+
+    document.querySelector(".user-name").innerText = userName;
+    document.querySelector(".github-name").innerText = userGitProfile;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      document.querySelector(".user-avatar").src = e.target.result;
+    };
+    reader.readAsDataURL(user.avatar.files[0]); // Convert file to Data URL
+
+    document.getElementById("form").style.display = "none";
+    document.getElementById("ticket").style.display = "flex";
+    // Style and message changes
     const title = document.getElementById("title");
     const description = document.getElementById("description");
-    title.innerHTML =
-      "Congrats, <p class='ticket-user'>Juan carlos!<p/> Your ticket is ready.";
-    description.innerHTML =
-      "We've emailed your ticket to <p class='ticket-email'>juancarlos@email.com <p/>and will send updates in the run up to the event.";
+    title.innerHTML = `Congrats, <p class='ticket-user'>${userName}!<p/> Your ticket is ready.`;
+    description.innerHTML = `We've emailed your ticket to <p class='ticket-email'>${userEmail}<p/>and will send updates in the run up to the event.`;
+    const logo = (document.querySelector(".logo").style.padding = "3rem 0");
+    description.style.fontSize = "16px";
+    description.style.padding = "1rem 0";
+    // Style and message changes
+
+    // Ticket konfigurieren
+    const today = new Date();
+
+    const eventDate = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + 7
+    );
+    // Get the formatted date: "Jan 31, 2025"
+    const dateFormatted = eventDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+
+    const eventString = `${dateFormatted} / Düsseldorf, Deutschland`;
+    document.getElementById("date-and-location").innerText = eventString;
+
+    // aleatory number
+    const code = `#0${Math.floor(Math.random() * 10000)}`;
+    document.getElementById("code").innerText = code;
+
+    // Ticket konfigurieren
   }
 
   return (
@@ -265,7 +314,7 @@ function MainForm() {
       </form>
 
       <section className="ticket-container">
-        <div className="ticket">
+        <div className="ticket" id="ticket">
           <img
             className="background-image"
             src="/images/pattern-ticket.svg"
@@ -273,7 +322,9 @@ function MainForm() {
           />
           <div className="top">
             <img className="logo-ticket" src="./images/logo-full.svg" alt="" />
-            <p className="date-and-location">Jan 31, 2025 / Austin, TX</p>
+            <p id="date-and-location" className="date-and-location">
+              Jan 31, 2025 / Austin, TX
+            </p>
           </div>
 
           <div className="bottom">
@@ -295,7 +346,9 @@ function MainForm() {
               </div>
             </div>
           </div>
-          <div className="code">#01609</div>
+          <div className="code" id="code">
+            #01609
+          </div>
         </div>
       </section>
     </div>
