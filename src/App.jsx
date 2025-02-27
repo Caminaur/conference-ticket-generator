@@ -12,6 +12,16 @@ function App() {
         className={styles.pattern_2}
         src="/images/pattern-squiggly-line-top.svg"
       />
+      <div className="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          {" Frontend Mentor"}
+        </a>
+        . Coded by
+        <a href="https://github.com/Caminaur/Testimonials-grid-section">
+          {" Julian Caminaur."}
+        </a>
+      </div>
     </div>
   );
 }

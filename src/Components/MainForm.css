@@ -41,6 +41,7 @@
   margin-top: 2rem;
   gap: 10px;
   z-index: 2;
+  margin-bottom: 1rem;
 }
 
 .form img {
@@ -293,6 +294,25 @@
   font-size: 28px;
   transform-origin: top;
   color: var(--neutral-500);
+}
+
+.attribution {
+  position: absolute;
+  width: 100%;
+  bottom: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: var(--neutral-0);
+  text-align: center;
+  z-index: 2;
+}
+.attribution a {
+  color: var(--orange-700);
+  text-decoration: none;
+}
+.attribution a:hover {
+  color: var(--orange-500);
 }
 /* Ticket */
 @media (max-width: 700px) {
